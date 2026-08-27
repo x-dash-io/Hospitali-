@@ -198,7 +198,7 @@
     function selectRegion(key, el) {
       var data = regions[key];
       if (!data) return;
-      bodySvg.querySelectorAll('.body-region').forEach(function (r) { r.classList.remove('is-active'); });
+      bodySvg.querySelectorAll('.body-marker').forEach(function (r) { r.classList.remove('is-active'); });
       if (el) el.classList.add('is-active');
       bodyAsk.innerHTML = data.sw + '<span class="en">' + data.en + '</span>';
       bodyFollow.innerHTML = '';
@@ -209,7 +209,7 @@
       });
     }
 
-    bodySvg.querySelectorAll('.body-region').forEach(function (region) {
+    bodySvg.querySelectorAll('.body-marker').forEach(function (region) {
       var key = region.getAttribute('data-region');
       region.addEventListener('click', function () { selectRegion(key, region); });
       region.addEventListener('keydown', function (e) {

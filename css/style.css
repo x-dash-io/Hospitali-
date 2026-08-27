@@ -381,23 +381,26 @@ hr.rule{
 
 .body-demo{
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 340px 1fr;
   gap: 2rem;
   align-items: start;
 }
 .body-figure{ display: flex; justify-content: center; padding: 0.25rem; }
-.body-svg{ width: 100%; max-width: 260px; height: auto; }
+.body-svg{ width: 100%; max-width: 360px; height: auto; }
 .body-silhouette{ fill: var(--forest-deep); }
-.body-region{
-  fill: transparent;
-  stroke: none;
-  cursor: pointer;
-  pointer-events: all;
-  transition: fill 0.18s ease;
+.body-marker{ cursor: pointer; }
+.body-marker circle{
+  fill: var(--card);
+  stroke: var(--forest);
+  stroke-width: 2.5;
+  transition: fill 0.18s ease, stroke 0.18s ease;
 }
-.body-region:hover{ fill: rgba(140,168,138,0.55); }
-.body-region:focus-visible{ outline: none; fill: rgba(140,168,138,0.55); }
-.body-region.is-active{ fill: rgba(189,115,64,0.7); }
+.body-marker text{ fill: var(--forest); font-family: var(--mono); font-size: 20px; font-weight: 500; pointer-events: none; }
+.body-marker:hover circle,
+.body-marker:focus-visible circle{ outline: none; fill: var(--sage-pale); stroke: var(--forest-deep); }
+.body-marker:focus-visible{ outline: none; }
+.body-marker.is-active circle{ fill: var(--clay); stroke: var(--clay-deep); }
+.body-marker.is-active text{ fill: #fff; }
 
 .body-panel{ min-width: 0; }
 .body-ask{
