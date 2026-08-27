@@ -108,7 +108,6 @@ hr.rule{
   margin: 0;
 }
 
-/* ---------------------------------- Buttons ---------------------------------- */
 
 .btn{
   display: inline-flex;
@@ -140,7 +139,6 @@ hr.rule{
 .btn-ghost::after{ content: '→'; transition: transform 0.18s ease; }
 .btn-ghost:hover::after{ transform: translateX(4px); }
 
-/* ---------------------------------- Nav ---------------------------------- */
 
 .site-header{
   position: sticky; top: 0; z-index: 50;
@@ -222,7 +220,6 @@ hr.rule{
   .nav-cta{ display: none; }
 }
 
-/* ---------------------------------- Hero ---------------------------------- */
 
 .hero{
   padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(3rem, 6vw, 5rem);
@@ -246,7 +243,6 @@ hr.rule{
 }
 .hero-note .dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--clay); }
 
-/* ------------------------- Signature: translator demo ------------------------- */
 
 .translator{
   background: var(--card);
@@ -322,7 +318,6 @@ hr.rule{
   content: ''; flex: 1; height: 1px; background: var(--line);
 }
 
-/* ---------------------------------- Pillars / cards ---------------------------------- */
 
 .grid-3{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
 .grid-2{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
@@ -345,7 +340,6 @@ hr.rule{
 .band h2, .band h3{ color: var(--sand); }
 .band .lede{ color: var(--sage-pale); }
 
-/* ---------------------------------- Workflow ---------------------------------- */
 
 .flow{
   display: flex;
@@ -377,7 +371,6 @@ hr.rule{
   .flow-step:last-child{ border-bottom: none; }
 }
 
-/* ---------------------------------- Body diagram demo ---------------------------------- */
 
 .body-demo{
   display: grid;
@@ -427,7 +420,6 @@ hr.rule{
   .body-figure{ order: -1; }
 }
 
-/* ---------------------------------- Table ---------------------------------- */
 
 .table-wrap{ overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
 table{ width: 100%; border-collapse: collapse; font-size: 0.95rem; }
@@ -435,7 +427,6 @@ th, td{ text-align: left; padding: 0.9rem 1.2rem; border-bottom: 1px solid var(-
 thead th{ font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); background: var(--sand-deep); }
 tbody tr:last-child td{ border-bottom: none; }
 
-/* ---------------------------------- Team ---------------------------------- */
 
 .team-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
 @media (max-width: 940px){ .team-grid{ grid-template-columns: repeat(2, 1fr); } }
@@ -484,7 +475,6 @@ tbody tr:last-child td{ border-bottom: none; }
   line-height: 1.4;
 }
 
-/* ---------------------------------- Contact ---------------------------------- */
 
 .contact-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 @media (max-width: 860px){ .contact-grid{ grid-template-columns: 1fr; } }
@@ -584,7 +574,6 @@ tbody tr:last-child td{ border-bottom: none; }
 .contact-info-item h4{ margin-bottom: 0.15em; font-size: 1rem; }
 .contact-info-item p{ margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
 
-/* ---------------------------------- Red-flag callout ---------------------------------- */
 
 .callout{
   border-left: 3px solid var(--clay);
@@ -596,7 +585,6 @@ tbody tr:last-child td{ border-bottom: none; }
 }
 .callout strong{ color: var(--clay-deep); }
 
-/* ---------------------------------- Page hero (inner pages) ---------------------------------- */
 
 .page-hero{ padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2rem); }
 .page-hero .lede{ margin-top: 0.6rem; }
@@ -606,7 +594,6 @@ tbody tr:last-child td{ border-bottom: none; }
   text-transform: uppercase; letter-spacing: 0.08em;
 }
 
-/* ---------------------------------- Footer ---------------------------------- */
 
 .site-footer{
   background: var(--forest-deep);
@@ -638,12 +625,10 @@ tbody tr:last-child td{ border-bottom: none; }
   padding: 0.4em 0.9em; border-radius: 100px;
 }
 
-/* ---------------------------------- Reveal on scroll ---------------------------------- */
 
 .reveal{ opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.is-visible{ opacity: 1; transform: translateY(0); }
 
-/* ---------------------------------- Focus ---------------------------------- */
 
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
   outline: 2px solid var(--clay-deep);

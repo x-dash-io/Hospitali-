@@ -1,11 +1,6 @@
-// ==========================================================================
-// HOSPITALI+ site scripts — plain JS, no build step.
-// ==========================================================================
-
 (function () {
   'use strict';
 
-  /* ---------------- Mobile nav toggle ---------------- */
   var toggle = document.querySelector('.nav-toggle');
   var links = document.getElementById('nav-links');
   if (toggle && links) {
@@ -21,7 +16,6 @@
     });
   }
 
-  /* ---------------- Reveal on scroll ---------------- */
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealEls.length) {
     var io = new IntersectionObserver(function (entries) {
@@ -37,7 +31,6 @@
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------------- Signature widget: patient → clinical translator ---------------- */
   var chipWrap = document.getElementById('translator-chips');
   if (chipWrap) {
     var examples = [
@@ -120,11 +113,9 @@
       chips.push(chip);
     });
 
-    // Initial state
     selectExample(0, chips[0]);
   }
 
-  /* ---------------- Body diagram demo: point-to-ask ---------------- */
   var bodySvg = document.querySelector('.body-svg');
   if (bodySvg) {
     var bodyAsk = document.getElementById('body-ask');
@@ -218,10 +209,36 @@
     });
   }
 
-  /* ---------------- Contact form (front-end only demo) ---------------- */
   var form = document.getElementById('contact-form');
   if (form) {
     var statusEl = document.getElementById('form-status');
+    var nameEl = document.getElementById('name');
+
+    var FORM_ENDPOINT = 'https://formspree.io/f/xrpgzwpg';
+    var formConfigured = FORM_ENDPOINT.indexOf('YOUR_FORM_ID') === -1;
+
+    function syncSelect(root) {
+      var native = root.querySelector('select');
+      var valueEl = root.querySelector('[data-select-value]');
+      if (!native || !valueEl) return;
+      root.querySelectorAll('[role="option"]').forEach(function (o) {
+        var match = o.getAttribute('data-value') === native.value;
+        o.setAttribute('aria-selected', match ? 'true' : 'false');
+        if (match) valueEl.textContent = o.textContent;
+      });
+    }
+    function syncAllSelects() {
+      document.querySelectorAll('[data-select]').forEach(syncSelect);
+    }
+    form.addEventListener('reset', function () { setTimeout(syncAllSelects, 0); });
+
+    function done(name, msg) {
+      statusEl.style.color = '#24392C';
+      statusEl.textContent = 'Thanks' + (name ? ', ' + name : '') + msg;
+      form.reset();
+      syncAllSelects();
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.checkValidity()) {
@@ -229,14 +246,41 @@
         statusEl.style.color = '#9C5B2E';
         return;
       }
-      var name = document.getElementById('name').value.trim();
+      var name = nameEl.value.trim();
+      var payload = {
+        name: name,
+        email: document.getElementById('email').value.trim(),
+        org: document.getElementById('org').value.trim(),
+        reason: document.getElementById('reason').value,
+        message: document.getElementById('message').value.trim()
+      };
+
+      if (!formConfigured) {
+        done(name, ' — your message is ready. Add a free backend (Formspree/Web3Forms) to start receiving it.');
+        return;
+      }
+
       statusEl.style.color = '#24392C';
-      statusEl.textContent = 'Thanks' + (name ? ', ' + name : '') + ' — your message is ready. Connect this form to your email or CRM to start receiving it.';
-      form.reset();
+      statusEl.textContent = 'Sending…';
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (res) {
+          if (res && (res.ok || res.success)) {
+            done(name, ', your message is on its way — we\'ll be in touch soon.');
+          } else {
+            throw new Error('rejected');
+          }
+        })
+        .catch(function () {
+          done(name, ' — your message is ready, but we couldn\'t send it just now. Please email us directly.');
+        });
     });
   }
 
-  /* ---------------- Custom select dropdowns ---------------- */
   document.querySelectorAll('[data-select]').forEach(function (root) {
     var trigger = root.querySelector('.select-trigger');
     var menu = root.querySelector('.select-menu');
