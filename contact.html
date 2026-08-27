@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Hospitali+</title>
+<title>Contact – Hospitali+</title>
 <meta name="description" content="Get in touch with the Hospitali+ team at Afya Ventures.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2333513F%22/><path d=%22M16 8v16M8 16h16%22 stroke=%22%23F6F1E5%22 stroke-width=%223%22 stroke-linecap=%22round%22/></svg>">
 <link rel="stylesheet" href="css/style.css">
@@ -65,14 +65,27 @@
             <input type="text" id="org" name="org" autocomplete="organization">
           </div>
           <div class="field">
-            <label for="reason">I'm reaching out about</label>
-            <select id="reason" name="reason">
-              <option value="pilot">Piloting Hospitali+ at our facility</option>
-              <option value="partner">Partnership / investment</option>
-              <option value="press">Press / research enquiry</option>
-              <option value="join">Joining the team</option>
-              <option value="other">Something else</option>
-            </select>
+            <label for="reason-trigger">I'm reaching out about</label>
+            <div class="select" data-select>
+              <button type="button" id="reason-trigger" class="select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="reason-trigger">
+                <span class="select-value" data-select-value>Piloting Hospitali+ at our facility</span>
+                <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <ul class="select-menu" role="listbox" tabindex="-1" aria-labelledby="reason-trigger">
+                <li role="option" data-value="pilot" aria-selected="true">Piloting Hospitali+ at our facility</li>
+                <li role="option" data-value="partner" aria-selected="false">Partnership / investment</li>
+                <li role="option" data-value="press" aria-selected="false">Press / research enquiry</li>
+                <li role="option" data-value="join" aria-selected="false">Joining the team</li>
+                <li role="option" data-value="other" aria-selected="false">Something else</li>
+              </ul>
+              <select id="reason" name="reason" class="visually-hidden">
+                <option value="pilot" selected>Piloting Hospitali+ at our facility</option>
+                <option value="partner">Partnership / investment</option>
+                <option value="press">Press / research enquiry</option>
+                <option value="join">Joining the team</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
           </div>
           <div class="field">
             <label for="message">Message</label>
@@ -90,21 +103,21 @@
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
             <div>
               <h4>Email</h4>
-              <p>hello@hospitaliplus.co.ke</p>
+              <p>info@hospitaliplus.co.ke</p>
             </div>
           </div>
           <div class="contact-info-item">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>
             <div>
               <h4>Phone</h4>
-              <p>+254 700 000 000</p>
+              <p>+254 794 391546</p>
             </div>
           </div>
           <div class="contact-info-item">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
             <div>
               <h4>Base</h4>
-              <p>Nairobi, Kenya</p>
+              <p>Nakuru, Kenya</p>
             </div>
           </div>
         </div>
