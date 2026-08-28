@@ -31,6 +31,32 @@
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
+  var lottieEls = document.querySelectorAll('[data-lottie]');
+  if (lottieEls.length && window.lottie) {
+    lottieEls.forEach(function (el) {
+      var anim = lottie.loadAnimation({
+        container: el,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        path: el.getAttribute('data-lottie')
+      });
+      if ('IntersectionObserver' in window) {
+        var lottieIo = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              anim.goToAndPlay(0, true);
+              lottieIo.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+        lottieIo.observe(el);
+      } else {
+        anim.play();
+      }
+    });
+  }
+
   var chipWrap = document.getElementById('translator-chips');
   if (chipWrap) {
     var examples = [

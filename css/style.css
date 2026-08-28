@@ -330,6 +330,13 @@ hr.rule{
   padding: 1.8rem;
 }
 .card .icon{ width: 40px; height: 40px; margin-bottom: 1rem; color: var(--clay); }
+
+.lottie-icon{
+  width: 72px;
+  height: 72px;
+  margin: -6px 0 0.6rem -6px;
+}
+.lottie-icon svg{ overflow: visible; }
 .band .card{ color: var(--ink); }
 .band .card h3{ color: var(--ink); }
 
